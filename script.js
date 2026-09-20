@@ -1,32 +1,170 @@
-document.getElementById("year").textContent = new Date().getFullYear();
+// ===============================
+// Web-and-Co - script.js
+// ===============================
 
-const WHATSAPP = "919389979354";
-const PHONE = "9389979354";
+// Mobile Menu
+const menuBtn = document.getElementById("menuBtn");
+const nav = document.getElementById("nav");
 
-function sendForm(e){
-  e.preventDefault();
-  const name = document.getElementById("name").value.trim();
-  const phone = document.getElementById("phone").value.trim();
-  const business = document.getElementById("business").value.trim();
-  const message = document.getElementById("message").value.trim();
+if (menuBtn && nav) {
+  menuBtn.addEventListener("click", () => {
+    nav.classList.toggle("open");
 
-  const text = `Hello Web & Co!%0A%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}%0ABusiness: ${encodeURIComponent(business)}%0AProject: ${encodeURIComponent(message)}`;
-  window.open(`https://wa.me/${WHATSAPP}?text=${text}`, "_blank");
+    const isOpen = nav.classList.contains("open");
+    menuBtn.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+    menuBtn.textContent = isOpen ? "✕" : "☰";
+  });
+
+  // Close mobile menu after clicking a link
+  document.querySelectorAll("#nav a").forEach((link) => {
+    link.addEventListener("click", () => {
+      nav.classList.remove("open");
+      menuBtn.textContent = "☰";
+      menuBtn.setAttribute("aria-label", "Open menu");
+    });
+  });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  const footer = document.querySelector("footer");
-  const phone = document.createElement("a");
-  phone.href = `tel:${PHONE}`;
-  phone.textContent = "Call: " + PHONE;
-  phone.style.marginLeft = "18px";
-  footer.appendChild(phone);
 
-  const wa = document.createElement("a");
-  wa.href = `https://wa.me/${WHATSAPP}`;
-  wa.target = "_blank";
-  wa.rel = "noopener";
-  wa.textContent = "WhatsApp ↗";
-  wa.style.marginLeft = "18px";
-  footer.appendChild(wa);
+// ===============================
+// Header Background on Scroll
+// ===============================
+
+const header = document.querySelector(".site-header");
+
+window.addEventListener("scroll", () => {
+  if (!header) return;
+
+  if (window.scrollY > 40) {
+    header.classList.add("scrolled");
+  } else {
+    header.classList.remove("scrolled");
+  }
+});
+
+
+// ===============================
+// Current Year
+// ===============================
+
+const year = document.getElementById("year");
+
+if (year) {
+  year.textContent = new Date().getFullYear();
+}
+
+
+// ===============================
+// FAQ Accordion
+// ===============================
+
+document.querySelectorAll(".faq-question").forEach((question) => {
+  question.addEventListener("click", () => {
+    const item = question.parentElement;
+
+    document.querySelectorAll(".faq-item").forEach((otherItem) => {
+      if (otherItem !== item) {
+        otherItem.classList.remove("active");
+      }
+    });
+
+    item.classList.toggle("active");
+  });
+});
+
+
+// ===============================
+// Scroll Reveal Animation
+// ===============================
+
+const revealElements = document.querySelectorAll(".reveal");
+
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver(
+    (entries, observerInstance) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          observerInstance.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.12
+    }
+  );
+
+  revealElements.forEach((element) => {
+    observer.observe(element);
+  });
+} else {
+  revealElements.forEach((element) => {
+    element.classList.add("show");
+  });
+}
+
+
+// ===============================
+// Smooth Anchor Links
+// ===============================
+
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
+  link.addEventListener("click", function (event) {
+    const targetId = this.getAttribute("href");
+
+    if (!targetId || targetId === "#") return;
+
+    const target = document.querySelector(targetId);
+
+    if (target) {
+      event.preventDefault();
+
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+  });
+});
+
+
+// ===============================
+// Active Navigation Link
+// ===============================
+
+const sections = document.querySelectorAll("section[id]");
+const navLinks = document.querySelectorAll("#nav a");
+
+const sectionObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+
+          if (link.getAttribute("href") === "#" + entry.target.id) {
+            link.classList.add("active");
+          }
+        });
+      }
+    });
+  },
+  {
+    rootMargin: "-30% 0px -60% 0px"
+  }
+);
+
+sections.forEach((section) => {
+  sectionObserver.observe(section);
+});
+
+
+// ===============================
+// Prevent Empty Links
+// ===============================
+
+document.querySelectorAll('a[href="#"]').forEach((link) => {
+  link.addEventListener("click", (event) => {
+    event.preventDefault();
+  });
 });
