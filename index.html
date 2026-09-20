@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Web & Co — modern websites and digital solutions for growing businesses.">
+  <title>Web & Co — Websites That Work</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="nav">
+  <a class="logo" href="#home">Web <span>&</span> Co</a>
+  <button class="menu" aria-label="Open menu">☰</button>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#services">Services</a>
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+<section id="home" class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow">WEB DESIGN • DIGITAL PRESENCE • GROWTH</p>
+    <h1>Websites that<br><em>work hard</em> for you.</h1>
+    <p class="lead">We create clean, modern and conversion-focused websites for businesses that want to look professional and get more enquiries.</p>
+    <div class="actions">
+      <a class="btn primary" href="#contact">Start a project →</a>
+      <a class="btn ghost" href="#work">View our work</a>
+      <a class="btn ghost" href="tel:9389979354">Call us</a>
+      <a class="btn ghost" href="https://wa.me/919389979354" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="browser">
+      <div class="dots"><i></i><i></i><i></i></div>
+      <div class="mock">
+        <div class="mock-line wide"></div>
+        <div class="mock-line"></div>
+        <div class="mock-grid"><span></span><span></span><span></span></div>
+      </div>
+    </div>
+    <div class="stat"><strong>01</strong><span>Strategy → Design → Launch</span></div>
+  </div>
+</section>
+
+<section id="services" class="section">
+  <p class="eyebrow">WHAT WE DO</p>
+  <h2>Everything you need to<br>build a stronger online presence.</h2>
+  <div class="cards">
+    <article><b>01</b><h3>Website Design</h3><p>Modern, responsive websites designed around your brand and customers.</p></article>
+    <article><b>02</b><h3>Business Websites</h3><p>Professional websites for local businesses, startups and service providers.</p></article>
+    <article><b>03</b><h3>Landing Pages</h3><p>Focused pages built to turn visitors into calls, messages and enquiries.</p></article>
+    <article><b>04</b><h3>Google & SEO Setup</h3><p>Strong foundations for search visibility, local discovery and growth.</p></article>
+  </div>
+</section>
+
+<section id="work" class="section dark">
+  <p class="eyebrow">SELECTED WORK</p>
+  <h2>Designed to make a<br>strong first impression.</h2>
+  <div class="projects">
+    <div class="project"><span>LOCAL BUSINESS</span><h3>Service Business Website</h3><p>Lead-focused • Mobile-first</p></div>
+    <div class="project"><span>STARTUP</span><h3>Modern Brand Website</h3><p>Strategy • Design • Launch</p></div>
+    <div class="project"><span>PROFESSIONAL</span><h3>Business Portfolio</h3><p>Clean • Premium • Fast</p></div>
+  </div>
+</section>
+
+<section id="about" class="section about">
+  <div>
+    <p class="eyebrow">ABOUT WEB & CO</p>
+    <h2>Simple design.<br>Serious business.</h2>
+  </div>
+  <p>Web & Co helps businesses build a professional digital presence without unnecessary complexity. From the first idea to the final launch, we focus on clarity, trust and results.</p>
+</section>
+
+<section id="contact" class="contact">
+  <div>
+    <p class="eyebrow">LET'S TALK</p>
+    <h2>Have a project<br>in mind?</h2>
+    <p>Tell us what you need and we'll get back to you.</p>
+  </div>
+  <form onsubmit="sendForm(event)">
+    <input id="name" required placeholder="Your name">
+    <input id="phone" required placeholder="Phone / WhatsApp">
+    <input id="business" placeholder="Business name">
+    <textarea id="message" required placeholder="Tell us about your project"></textarea>
+    <button class="btn primary" type="submit">Send enquiry →</button>
+  </form>
+</section>
+</main>
+
+<footer>
+  <div class="logo">Web <span>&</span> Co</div>
+  <p>© <span id="year"></span> Web & Co. All rights reserved.</p>
+  <a href="https://www.instagram.com/_web.and.co_/" target="_blank" rel="noopener">Instagram ↗</a>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
